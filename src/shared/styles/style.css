@@ -1,0 +1,598 @@
+:root {
+  --primary-color: #00e0ff;
+  --secondary-color: #23283a;
+  --bg-color: #0f1117;
+  --text-color: #e6e6e6;
+  --card-bg: #1d2130;
+  --accent: #ff4081;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.starry-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 224, 255, 0.2);
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-title h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+nav a {
+  margin-left: 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+.featured-games {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.featured-games h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.game-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 224, 255, 0.3);
+}
+
+.game-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  background: #181c2b;
+  display: block;
+}
+
+.game-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.game-card p {
+  font-size: 0.9rem;
+  color: #cfcfcf;
+}
+
+.about-box {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 8px rgba(255, 64, 129, 0.2);
+}
+
+.about-box h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.footer {
+  background-color: var(--card-bg);
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.btn-comprar {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #00e0ff;
+  color: #23283a;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #00b8d9;
+}
+
+/* Carrusel de imágenes dentro de cada tarjeta de juego */
+.game-carousel {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #181c2b;
+  margin-bottom: 0.8rem;
+}
+.game-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.4s;
+}
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.carousel-dots span {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff6;
+  border: 1.5px solid #00e0ff;
+  transition: background 0.2s, border 0.2s;
+}
+.carousel-dots .active {
+  background: #00e0ff;
+  border: 1.5px solid #fff;
+}
+
+.registro-form {
+  background: #f5f5f5;
+  padding: 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.registro-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00e0ff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+.registro-form button {
+  width: 100%;
+  padding: 10px;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.registro-form button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.producto-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 224, 255, 0.3);
+}
+
+.producto-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  background: #181c2b;
+  display: block;
+}
+
+.producto-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.producto-card p {
+  font-size: 0.95rem;
+  color: #cfcfcf;
+}
+
+.producto-precio {
+  color: var(--accent);
+  font-weight: bold;
+  margin: 0.5rem 0 0.7rem 0;
+}
+
+.producto-card .cantidad-control {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.btn-cantidad {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cantidad:hover {
+  background-color: #0056b3;
+}
+
+.cantidad {
+  font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.carrito-box {
+  background: var(--secondary-color);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0,224,255,0.08);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carrito-box h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.carrito-vacio {
+  color: #aaa;
+  text-align: center;
+}
+.carrito-lista {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.carrito-lista li {
+  color: #e6e6e6;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2226;
+  padding-bottom: 2px;
+  gap: 10px;
+}
+.carrito-item-nombre {
+  flex: 1 1 0;
+  min-width: 90px;
+}
+.carrito-cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.carrito-btn-cantidad {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.carrito-btn-cantidad:hover {
+  background: #0056b3;
+}
+.carrito-btn-eliminar {
+  background: #ff4081;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 6px;
+  transition: background 0.2s;
+}
+.carrito-btn-eliminar:hover {
+  background: #c60055;
+}
+
+.btn-flotante {
+  background: #00e0ff;
+  color: #23283a;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 10px 22px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 1.5rem auto 0 auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,224,255,0.08);
+  transition: background 0.3s;
+}
+.btn-flotante:hover {
+  background: #00b8d9;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-registro {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 340px;
+  max-width: 95vw;
+  box-shadow: 0 8px 32px rgba(0,224,255,0.18);
+  position: relative;
+  animation: modalShow 0.3s;
+}
+@keyframes modalShow {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #00e0ff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.modal-cerrar:hover {
+  color: #ff4081;
+}
+
+.nav-btn {
+  background: #00e0ff;
+  color: #23283a;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 7px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1.2rem;
+  transition: background 0.3s;
+  position: relative;
+}
+.nav-btn:hover {
+  background: #00b8d9;
+}
+.carrito-badge {
+  background: #ff4081;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9em;
+  margin-left: 6px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.moon-effect {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  left: auto;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 60% 40%, #fffbe6 70%, #ffe066 90%, #f7c873 100%, transparent 120%);
+  border-radius: 50%;
+  box-shadow: 0 0 60px 20px #fffbe6, 0 0 120px 40px #ffe066;
+  z-index: 100;
+  animation: moon-glow 2.5s ease-in-out infinite alternate;
+  pointer-events: none;
+  display: block;
+}
+
+.cloud-effect {
+  position: fixed;
+  top: 80px;
+  left: 60px;
+  width: 160px;
+  height: 60px;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.7;
+  animation: cloud-move 18s linear infinite alternate;
+}
+.cloud-shape {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+.cloud-shape.one {
+  width: 70px; height: 40px; left: 0; top: 10px;
+}
+.cloud-shape.two {
+  width: 50px; height: 30px; left: 50px; top: 0;
+}
+.cloud-shape.three {
+  width: 60px; height: 36px; left: 90px; top: 18px;
+}
+@keyframes cloud-move {
+  0% { left: 60px; opacity: 0.7; }
+  100% { left: 220px; opacity: 0.9; }
+}
+
+@keyframes moon-glow {
+  0% {
+    box-shadow: 0 0 60px 20px #fffbe6, 0 0 120px 40px #ffe066;
+    filter: brightness(1.1);
+  }
+  100% {
+    box-shadow: 0 0 90px 40px #fffbe6, 0 0 180px 80px #ffe066;
+    filter: brightness(1.35);
+  }
+}
+
+.planet-bg {
+  filter: drop-shadow(0 0 16px #fff8) brightness(1.1);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+}
+
+.space-debris {
+  box-shadow: 0 0 6px 1px #fff4;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+}
+
+@keyframes planet-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.04); }
+}
+
+@keyframes debris-float {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  100% { transform: translateY(-12px) rotate(20deg) scale(1.1); }
+}
+
