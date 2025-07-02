@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
   --primary-color: #00e0ff;
   --secondary-color: #23283a;
@@ -597,3 +599,90 @@ nav a:hover {
   100% { transform: translateY(-12px) rotate(20deg) scale(1.1); }
 }
 
+.registro-form,
+.registro-form label,
+.registro-form input,
+.registro-form h3,
+.registro-form small,
+.registro-form button {
+  color: #111 !important;
+}
+
+.perfil-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.perfil-icon:hover {
+  transform: scale(1.15);
+}
+
+.perfil-icon .candado-arco {
+  stroke-dasharray: 52;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.4s cubic-bezier(.4,2,.6,1);
+}
+.perfil-icon:hover .candado-arco {
+  stroke-dashoffset: 52;
+}
+
+.logo-nombre {
+  font-family: 'Press Start 2P', cursive, monospace;
+  font-size: 2.1rem;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44;
+  display: inline-block;
+  position: relative;
+  /* Quita la transición lateral */
+  left: 0;
+  transition: none;
+}
+
+.logo-nombre {
+  font-family: 'Press Start 2P', cursive, monospace;
+  font-size: 2.1rem;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44;
+  display: inline-block;
+  position: relative;
+  left: 0;
+  transition: none;
+  animation: glitch-8bit 0.5s steps(2, end) infinite;
+}
+
+@keyframes glitch-8bit {
+  0% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, -2px -2px 0 #ff00c8;
+    transform: translate(0, 0);
+  }
+  20% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, 2px -2px 0 #00fff9;
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, -2px 2px 0 #ff00c8;
+    transform: translate(2px, -2px);
+  }
+  60% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, 2px 2px 0 #00fff9;
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, -2px -2px 0 #ff00c8;
+    transform: translate(1px, -1px);
+  }
+  100% {
+    text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44, 2px 2px 0 #00fff9;
+    transform: translate(0, 0);
+  }
+}
+
+.titulo-pixelado, .featured-games h3 {
+  font-family: 'Press Start 2P', cursive, monospace;
+  font-size: 1.1rem;
+  color: var(--primary-color, #00e0ff);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #222, 4px 4px 0 #00e0ff44;
+  margin-bottom: 18px;
+}

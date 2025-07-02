@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { ProductContext } from '../ProductContext/ProductContext';
 import GameCarousel from '../GameCarousel/GameCarousel';
+import Swal from 'sweetalert2';
 import '../../../shared/styles/style.css';
 
 const GameCard = ({ juego }) => {
@@ -13,10 +14,19 @@ const GameCard = ({ juego }) => {
   };
 
   const handleComprar = () => {
+    const usuarioSesion = JSON.parse(localStorage.getItem('usuarioSesion'));
+    if (!usuarioSesion) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debes iniciar sesión',
+        text: 'Por favor, inicia sesión para comprar.',
+      });
+      return;
+    }
     const juegoCarrito = {
       id: juego.name,
       title: juego.name,
-      price: juego.price, // Use price from juego
+      price: juego.price,
       description: juego.desc,
       image: juego.images[0],
     };

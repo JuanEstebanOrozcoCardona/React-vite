@@ -3,16 +3,30 @@ import { ProductContext } from '../ProductContext/ProductContext';
 import TarjetaProducto from '../TarjetaProducto/TarjetaProducto';
 import GameCard from '../GameCard/GameCard';
 import RegistroForm from '../RegistroForm/RegistroForm';
+import LoginForm from '../Login/LoginForm';
 import Footer from '../../../shared/components/footer';
 import Navbar from '../../../shared/components/navbar';
 import CarritoDeCompra from '../carritodecompra/carrito';
 import '../../../shared/styles/style.css';
 
 const App = () => {
-  const { productos, loading, error, cart, addToCart, removeFromCart, increaseCartItem, decreaseCartItem } = useContext(ProductContext);
+  const {
+    productos,
+    loading,
+    error,
+    cart,
+    addToCart,
+    increaseCartItem,
+    decreaseCartItem,
+    removeFromCart,
+    clearCart // <-- Trae la función del contexto
+  } = useContext(ProductContext);
+
   const [showRegistro, setShowRegistro] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [showCarrito, setShowCarrito] = useState(false);
 
+  // Tu arreglo de juegos destacados original
   const juegos = [
     {
       name: 'The Legend of Zelda',
@@ -103,7 +117,6 @@ const App = () => {
     const starryBg = document.getElementById('starry-bg');
     if (!starryBg) return;
     starryBg.innerHTML = '';
-    // Estrellas
     const numStars = 80;
     for (let i = 0; i < numStars; i++) {
       const star = document.createElement('div');
@@ -120,24 +133,19 @@ const App = () => {
       star.style.animation = `twinkle ${2 + Math.random() * 2}s infinite alternate`;
       starryBg.appendChild(star);
     }
-    // Luna (ya está en el JSX como <div className="moon-effect"></div>)
   }, []);
 
   return (
-    <div className="main-container">
-      <div className="starry-bg" id="starry-bg">
-        <div className="moon-effect"></div>
-        <div className="cloud-effect">
-          <div className="cloud-shape one"></div>
-          <div className="cloud-shape two"></div>
-          <div className="cloud-shape three"></div>
-        </div>
-      </div>
+    <div>
+      <div id="starry-bg"></div>
       <header className="header">
-        <div className="logo-title">
-          <h1>VirtuaGames</h1>
-        </div>
-        <Navbar setShowRegistro={setShowRegistro} setShowCarrito={setShowCarrito} totalProductos={totalProductos} />
+        <h1 className="logo-nombre">VirtuaGames</h1>
+        <Navbar
+          setShowRegistro={setShowRegistro}
+          setShowCarrito={setShowCarrito}
+          setShowLogin={setShowLogin}
+          totalProductos={totalProductos}
+        />
       </header>
 
       <section className="featured-games" id="juegos">
@@ -149,12 +157,25 @@ const App = () => {
         </div>
       </section>
 
+      {/* Modal de Registro */}
       <section id="registro">
         {showRegistro && (
           <div className="modal-overlay" onClick={() => setShowRegistro(false)}>
             <div className="modal-registro" onClick={e => e.stopPropagation()}>
               <button className="modal-cerrar" onClick={() => setShowRegistro(false)}>&times;</button>
-              <RegistroForm />
+              <RegistroForm setShowRegistro={setShowRegistro} />
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* Modal de Login */}
+      <section id="login">
+        {showLogin && (
+          <div className="modal-overlay" onClick={() => setShowLogin(false)}>
+            <div className="modal-registro" onClick={e => e.stopPropagation()}>
+              <button className="modal-cerrar" onClick={() => setShowLogin(false)}>&times;</button>
+              <LoginForm setShowLogin={setShowLogin} />
             </div>
           </div>
         )}
@@ -163,7 +184,7 @@ const App = () => {
       <section className="productos" id="productos">
         <h3>Productos</h3>
         {loading && <p>Cargando productos...</p>}
-        {error && <p style={{color: 'red'}}>{error}</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className="productos-grid">
           {productos.map((producto, i) => (
             <TarjetaProducto producto={producto} key={i} />
@@ -180,6 +201,7 @@ const App = () => {
           increaseCartItem={increaseCartItem}
           removeFromCart={removeFromCart}
           setShowCarrito={setShowCarrito}
+          clearCart={clearCart}
         />
       )}
 

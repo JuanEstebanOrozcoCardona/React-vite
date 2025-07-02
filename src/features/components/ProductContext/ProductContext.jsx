@@ -97,6 +97,9 @@ export const ProductProvider = ({ children }) => {
     setCart((prevCart) => prevCart.filter((item) => (item.id || item.nombre) !== id));
   };
 
+  // ---- FUNCIÓN PARA VACIAR EL CARRITO ----
+  const clearCart = () => setCart([]);
+
   useEffect(() => {
     setLoading(true);
     setError("");
@@ -120,7 +123,17 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ productos, loading, error, cart, addToCart, increaseCartItem, decreaseCartItem, removeFromCart }}>
+    <ProductContext.Provider value={{
+      productos,
+      loading,
+      error,
+      cart,
+      addToCart,
+      increaseCartItem,
+      decreaseCartItem,
+      removeFromCart,
+      clearCart // <-- ¡IMPORTANTE!
+    }}>
       {children}
     </ProductContext.Provider>
   );
